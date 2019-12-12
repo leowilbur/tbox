@@ -1,0 +1,6 @@
+CREATE TABLE `authorizations` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `phone_number` VARCHAR(30) NULL,
+  `otp` VARCHAR(10) NULL,
+  `stamp_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+  PRIMARY KEY (`id`));
