@@ -4,11 +4,12 @@ jobs:
     docker:
       - image: circleci/golang:1.12.9-stretch-node
       - image: circleci/mysql:latest
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true 
           MYSQL_DATABASE: tbox 
           MYSQL_HOST: 127.0.0.1 
-          MYSQL_ROOT_HOST: %
+          MYSQL_ROOT_HOST: root
           MYSQL_USER: root
 
     working_directory: /go/src/github.com/leowilbur/tbox
