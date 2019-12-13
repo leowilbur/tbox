@@ -2,8 +2,10 @@ package rest
 
 import (
 	"database/sql"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/leowilbur/tbox/docs/api"
 	"github.com/rs/cors"
 )
 
@@ -33,10 +35,10 @@ func New(
 		corsMiddleware.HandlerFunc(c.Writer, c.Request)
 	})
 
-	// r.GET("/swagger.json", func(r *gin.Context) {
-	// 	r.Header("Content-Type", "application/json")
-	// 	r.String(http.StatusOK, api.JSON)
-	// })
+	r.GET("/swagger.json", func(r *gin.Context) {
+		r.Header("Content-Type", "application/json")
+		r.String(http.StatusOK, api.JSON)
+	})
 
 	r.POST("users/otp/generate", r.OTPGenerate)
 	r.POST("users/otp/validate", r.OTPValidate)
