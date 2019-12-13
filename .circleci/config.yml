@@ -36,7 +36,7 @@ jobs:
       - run:
           name: Run init database migrations
           command: |
-            migrate -source file://./migrations -database mysql://root:root@tcp(127.0.0.1:3306)/tbox up
+            migrate -source file://./migrations -database "mysql://root:root@tcp(127.0.0.1:3306)/tbox" up
       - run: 
           name: Run unit tests with ginkgo
           command: |
