@@ -11,6 +11,7 @@ jobs:
           MYSQL_HOST: 127.0.0.1 
           MYSQL_ROOT_HOST: root
           MYSQL_USER: root
+          MYSQL_PASSWORD: root
 
     working_directory: /go/src/github.com/leowilbur/tbox
 
@@ -33,6 +34,16 @@ jobs:
             - /home/circleci/go/bin
           key: dependencies
 
+      - run:
+          name: Waiting for MySQL to be ready
+          command: |
+            for i in `seq 1 10`;
+            do
+              nc -z 127.0.0.1 3306 && echo Success && exit 0
+              echo -n .
+              sleep 1
+            done
+            echo Failed waiting for MySQL && exit 1
       - run:
           name: Run init database migrations
           command: |
