@@ -40,7 +40,7 @@ In order to make setting it up easier, there's a `docker-compose.yml` , which co
 
 ```bash
 # Using docker-compose file to run mysql server localhost with port 3306
-docker-compose up -d
+sudo docker-compose up -d
 ```
 
 ```bash

@@ -1,5 +1,5 @@
-postgres:
-  image: mysql:lastest
+mysql:
+  image: mysql
   restart: always
   ports:
     - "3306:3306"
