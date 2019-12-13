@@ -1,6 +1,6 @@
 # TBOX Backend Project [![CircleCI](https://circleci.com/gh/leowilbur/tbox/tree/master.svg?style=svg&circle-token=6c77be0831af8df121c16787d65045bea3285d64)](https://circleci.com/gh/leowilbur/tbox/tree/master)
 
-This repository contains an implementation of the CheckMyMole API. All the
+This repository contains an implementation of the TBOX API. All the
 endpoints have been described in the [Swagger definition](./swagger.yaml).
 
 ## Project structure
