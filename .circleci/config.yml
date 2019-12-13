@@ -25,13 +25,18 @@ jobs:
             go get -u -d github.com/golang-migrate/migrate/cli
             cd $GOPATH/src/github.com/golang-migrate/migrate/cli
             go build -tags 'mysql' -o $GOPATH/bin/migrate github.com/golang-migrate/migrate/cli
+            cd /go/src/github.com/leowilbur/tbox
 
       - save_cache:
           paths:
             - node_modules
             - /home/circleci/go/bin
           key: dependencies
-    
+
+      - run:
+          name: Run init database migrations
+          command: |
+            migrate -source file://./migrations -database mysql://root:root@tcp(127.0.0.1:3306)/tbox up
       - run: 
           name: Run unit tests with ginkgo
           command: |

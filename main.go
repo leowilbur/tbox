@@ -12,12 +12,12 @@ import (
 
 var (
 	bind         = flag.String("bind", ":8080", "address which we should bind to")
-	dbConnection = flag.String("dbConnection", "", "address which database connection string")
+	dbConnection = flag.String("dbConnection", "root:root@tcp(127.0.0.1:3306)/tbox?timeout=360s&multiStatements=true&parseTime=true", "address which database connection string")
 )
 
 func main() {
 	log.Println("connecting to mysql database")
-	db, err := sql.Open("mysql", "rdsuser:DEV7ywDRDwPKTsya@tcp(redisys-dev.cm6yeh8nkhqx.ap-southeast-2.rds.amazonaws.com:3306)/_test_migration?timeout=360s&multiStatements=true&parseTime=true")
+	db, err := sql.Open("mysql", *dbConnection)
 
 	router, err := rest.New(
 		db,
@@ -25,5 +25,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	panic(http.ListenAndServe(":8080", router))
+	panic(http.ListenAndServe(*bind, router))
 }
